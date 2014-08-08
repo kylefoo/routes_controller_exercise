@@ -1,4 +1,13 @@
-<h2> I AMA View </h2>
-<p>
-  Find me in <%= Rails.root.join("app", "views", "products", __FILE__ ) %>
-</p>
+<% first_product = Product.first %>
+<h2> I AM A View </h2>
+
+<% all_product = Product.includes(:user).all %>
+<ul>
+<% all_product.each do |p| %>
+<li>
+   Product Name: "<%= p.name  %>"products $<%= p.price %>
+   Sold by <%= p.user.name %>
+</li>
+<% end %>
+Find me in <% Rails.root.join("app", "views", "products", __FILE__ ) %>
+</ul>
